@@ -12,7 +12,7 @@ export default function Header() {
           <img 
   src="/brand/vss-logo-v3.png" 
   alt="Vibe Software Solutions" 
-  style={{ height: '650px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(0,255,136,0.35))' }} 
+  style={{ height: '150px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(0,255,136,0.35))' }} 
 /></Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           <Link href="/#sprints" style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(240,240,245,0.6)', textDecoration: 'none', letterSpacing: '0.02em' }}>Sprints</Link>
