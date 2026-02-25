@@ -9,6 +9,9 @@ const topics = [
   'Hemp Industry & Regulatory Navigation',
   'Autonomous Technology & Defense Innovation',
   'Building Resilient Businesses Under Pressure',
+  'AI Business Automation',
+  'AI in Disaster Recovery',
+  'AGI Robotics',
 ]
 
 const perks = [
