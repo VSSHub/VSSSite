@@ -10,7 +10,7 @@ export default function Header() {
       <nav style={{ height: '64px', maxWidth: '1280px', margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
           <img 
-  src="/brand/vss-logo-v2.png" 
+  src="/brand/vss-logo-v3.png" 
   alt="Vibe Software Solutions" 
   style={{ height: '375px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(0,255,136,0.35))' }} 
 /></Link>
