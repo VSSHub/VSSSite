@@ -1,8 +1,8 @@
-ï»¿import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-01-27.acacia',
+  apiVersion: '2026-01-28.clover',
 })
 
 const PRICES: Record<string, string> = {
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       custom_build: customBuild ? 'yes' : 'no',
     },
     custom_text: {
-      submit: { message: customBuild ? 'Custom build â€” ships in 10 business days. Free shipping.' : 'Standard build â€” ships in 7 business days. Free shipping.' },
+      submit: { message: customBuild ? 'Custom build — ships in 10 business days. Free shipping.' : 'Standard build — ships in 7 business days. Free shipping.' },
     },
   })
 
