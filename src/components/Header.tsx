@@ -18,6 +18,7 @@ export default function Header() {
           <Link href="/datasets" style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(240,240,245,0.6)', textDecoration: 'none', letterSpacing: '0.02em' }}>Datasets</Link>
           <Link href="/ubi" style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(240,240,245,0.6)', textDecoration: 'none', letterSpacing: '0.02em' }}>AI Stipend</Link>
           <Link href="/projects" style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(240,240,245,0.6)', textDecoration: 'none', letterSpacing: '0.02em' }}>Projects</Link>
+          <Link href="/webdesign" style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(240,240,245,0.6)', textDecoration: 'none', letterSpacing: '0.02em' }}>Web Design</Link>
           <Link href="/book" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: '40px', padding: '0 20px', background: '#00ff88', color: '#050508', fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 700, letterSpacing: '0.03em', textDecoration: 'none', borderRadius: '8px', boxShadow: '0 0 20px rgba(0,255,136,0.25)', whiteSpace: 'nowrap' }}>Book a Sprint</Link>
         </div>
       </nav>
