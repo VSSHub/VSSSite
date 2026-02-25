@@ -23,7 +23,7 @@ export default function Header() {
         
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
-          <img src="/brand/vss-logo-v3.png" alt="Vibe Software Solutions" style={{ height: '449px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(0,255,136,0.35))' }} />
+          <img src="/brand/vss-logo-v3.png" alt="Vibe Software Solutions" style={{ height: '200px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(0,255,136,0.35))' }} />
         </Link>
 
         {/* Desktop links */}
