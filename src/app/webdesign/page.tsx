@@ -75,6 +75,13 @@ const tiers = [
   },
 ]
 
+const steps = [
+  { step: '01', title: 'Reach Out', desc: 'Email us with your project details and chosen tier.' },
+  { step: '02', title: 'Pay Deposit', desc: '50% of the project total is due before work begins.' },
+  { step: '03', title: 'We Build', desc: 'Work starts immediately. You get updates throughout.' },
+  { step: '04', title: 'Deliver & Close', desc: 'Final 50% due on delivery. Site goes live.' },
+]
+
 export default function WebDesignPage() {
   const [selectedTier, setSelectedTier] = useState<number | null>(null)
 
@@ -153,14 +160,14 @@ export default function WebDesignPage() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {tier.features.map((f) => (
                     <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                      <span style={{ color: '#00ff88', fontSize: '10px', marginTop: '3px', flexShrink: 0 }}>▸</span>
+                      <span style={{ color: '#00ff88', fontSize: '10px', marginTop: '3px', flexShrink: 0 }}>&#9658;</span>
                       <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(240,240,245,0.65)', lineHeight: 1.5 }}>{f}</span>
                     </div>
                   ))}
                 </div>
-                
+                <a
                   href="mailto:vibesoftwaresolutions@gmail.com"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -179,7 +186,7 @@ export default function WebDesignPage() {
                     boxShadow: tier.accent ? '0 0 30px rgba(0,255,136,0.3)' : 'none',
                   }}
                 >
-                  Get Started → {tier.price}
+                  Get Started &#8594; {tier.price}
                 </a>
               </div>
             ))}
@@ -193,12 +200,7 @@ export default function WebDesignPage() {
             <h2 style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 900, color: '#f0f0f5', letterSpacing: '-0.03em' }}>Simple. Transparent. No Surprises.</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2px' }}>
-            {[
-              { step: '01', title: 'Reach Out', desc: 'Email us with your project details and chosen tier.' },
-              { step: '02', title: 'Pay Deposit', desc: '50% of the project total is due before work begins.' },
-              { step: '03', title: 'We Build', desc: 'Work starts immediately. You get updates throughout.' },
-              { step: '04', title: 'Deliver & Close', desc: 'Final 50% due on delivery. Site goes live.' },
-            ].map((item) => (
+            {steps.map((item) => (
               <div key={item.step} style={{ padding: '28px 24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '20px', fontWeight: 700, color: '#00ff88', opacity: 0.4 }}>{item.step}</span>
                 <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', fontWeight: 700, color: '#f0f0f5' }}>{item.title}</p>
@@ -211,13 +213,14 @@ export default function WebDesignPage() {
         {/* CTA */}
         <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
           <h2 style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(32px, 5vw, 60px)', fontWeight: 900, color: '#f0f0f5', letterSpacing: '-0.04em', lineHeight: 1.0 }}>
-            Ready for a Site<br />
+            Ready for a Site
+            <br />
             <span style={{ background: 'linear-gradient(135deg, #00ff88 0%, #00cc6a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Worth Sharing?</span>
           </h2>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '17px', color: 'rgba(240,240,245,0.5)', maxWidth: '480px', lineHeight: 1.6 }}>
             Email us your vision and we&apos;ll get back to you within 24 hours with a plan.
           </p>
-          
+          <a
             href="mailto:vibesoftwaresolutions@gmail.com"
             style={{
               display: 'inline-flex',
@@ -236,9 +239,9 @@ export default function WebDesignPage() {
               boxShadow: '0 0 60px rgba(0,255,136,0.4), 0 8px 32px rgba(0,0,0,0.5)',
             }}
           >
-            Start Your Project →
+            Start Your Project &#8594;
           </a>
-          <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '11px', color: 'rgba(240,240,245,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>50% deposit required · Work begins within 48 hours of payment</p>
+          <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '11px', color: 'rgba(240,240,245,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>50% deposit required &middot; Work begins within 48 hours of payment</p>
         </div>
 
       </div>
