@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 const links = [
   { href: '/#sprints', label: 'Sprints' },
+  { href: '/maxxie', label: 'MaXXiE AI' },
   { href: '/manual', label: 'Manual' },
   { href: '/consult', label: 'Speaking' },
   { href: '/datasets', label: 'Datasets' },
