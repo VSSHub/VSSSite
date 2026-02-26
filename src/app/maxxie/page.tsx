@@ -1,478 +1,126 @@
-import Image from 'next/image'
+﻿'use client'
 
-export const metadata = {
-  title: 'Vibe Coding Manual — Anthony S. Owens',
-  description:
-    'The Vibe Coding Manual by Anthony S. Owens. A no-nonsense guide to building real software, fast. $65.',
-}
+import { useState } from 'react'
+import Link from 'next/link'
 
-const chapters = [
-  'The Vibe Coding Philosophy — Why speed and clarity beat perfection',
-  'Stack Selection — Choosing tools that won\'t betray you mid-build',
-  'Sprint Architecture — How to scope, structure, and ship in days',
-  'AI as a Co-Builder — Using LLMs as a senior engineer, not a search bar',
-  'Design Systems That Work — Dark glass, hierarchy, and visual authority',
-  'Deployment Without Drama — Vercel, CI/CD, and zero-config launches',
-  'The Handoff — Documentation, maintainability, and client trust',
-  'What\'s Next — Building your second product before the first one ships',
+const drives = [
+  { size: '128GB', price: 499, priceId: 'price_1T4sNRBeUECy8XwJSxGxc5WR', tag: 'Entry Intelligence' },
+  { size: '256GB', price: 525, priceId: 'price_1T4sNbBeUECy8XwJsN8GWfmQ', tag: 'Enhanced Capacity' },
+  { size: '500GB', price: 580, priceId: 'price_1T4sNjBeUECy8XwJ0cHQJfoq', tag: 'Most Popular', popular: true },
+  { size: '1TB',   price: 650, priceId: 'price_1T4sNpBeUECy8XwJnHJTD7oV', tag: 'Maximum Power' },
 ]
 
-export default function ManualPage() {
+export default function MaXXiEPage() {
+  const [selected, setSelected] = useState(2)
+  const [loading, setLoading] = useState(false)
+
+  async function handleCheckout() {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId: drives[selected].priceId, quantity: 1 }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } catch {
+      setLoading(false)
+    }
+  }
+
   return (
-    <>
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section
-        style={{
-          paddingTop: '120px',
-          paddingBottom: '0',
-          background: 'linear-gradient(180deg, #050508 0%, #07070f 100%)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Radial glow */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '900px',
-            height: '700px',
-            background:
-              'radial-gradient(ellipse at 50% 10%, rgba(0,255,136,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        <div
-          style={{
-            maxWidth: '1100px',
-            margin: '0 auto',
-            padding: '60px 32px 0',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '80px',
-            alignItems: 'center',
-          }}
-        >
-          {/* Book cover */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              position: 'relative',
-            }}
-          >
-            {/* Glow behind book */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: '-20px',
-                background:
-                  'radial-gradient(ellipse at 50% 60%, rgba(0,255,136,0.12) 0%, transparent 70%)',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }}
-            />
-            <div
-              style={{
-                position: 'relative',
-                zIndex: 1,
-                borderRadius: '8px',
-                overflow: 'hidden',
-                boxShadow:
-                  '0 40px 100px rgba(0,0,0,0.8), 0 0 60px rgba(0,255,136,0.08), -8px 8px 0 rgba(0,0,0,0.4)',
-                transform: 'perspective(1000px) rotateY(4deg)',
-                maxWidth: '340px',
-                width: '100%',
-              }}
-            >
-              <Image
-                src="/brand/vcm.jpg"
-                alt="Vibe Coding Manual by Anthony S. Owens"
-                width={340}
-                height={520}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-                priority
-              />
-            </div>
-          </div>
-
-          {/* Info */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '28px',
-            }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <span
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  color: '#00ff88',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                New Release
-              </span>
-
-              <h1
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(34px, 5vw, 56px)',
-                  fontWeight: 900,
-                  color: '#f0f0f5',
-                  letterSpacing: '-0.04em',
-                  lineHeight: 1.0,
-                }}
-              >
-                Vibe Coding
-                <br />
-                <span
-                  style={{
-                    background: 'linear-gradient(135deg, #00ff88 0%, #00cc6a 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  Manual
-                </span>
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '15px',
-                  color: 'rgba(240,240,245,0.45)',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                Written by{' '}
-                <span style={{ color: 'rgba(240,240,245,0.8)', fontWeight: 600 }}>
-                  Anthony S. Owens
-                </span>
-              </p>
-            </div>
-
-            <p
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '17px',
-                color: 'rgba(240,240,245,0.6)',
-                lineHeight: 1.7,
-              }}
-            >
-              The no-fluff guide to building real software fast. Sprint
-              architecture, AI-assisted development, premium design systems, and
-              shipping without drama — everything VSS runs on, written down.
-            </p>
-
-            {/* Price + CTA */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-                padding: '28px',
-                borderRadius: '16px',
-                background: 'rgba(0,255,136,0.05)',
-                border: '1px solid rgba(0,255,136,0.18)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
-                <span
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '52px',
-                    fontWeight: 900,
-                    color: '#00ff88',
-                    letterSpacing: '-0.04em',
-                    lineHeight: 1,
-                  }}
-                >
-                  $65
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '14px',
-                    color: 'rgba(240,240,245,0.4)',
-                  }}
-                >
-                  one-time · digital PDF
-                </span>
-              </div>
-
-              <a
-                href="mailto:vibesoftwaresolutions@gmail.com?subject=Vibe Coding Manual — Purchase"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '56px',
-                  borderRadius: '12px',
-                  background: '#00ff88',
-                  color: '#050508',
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '16px',
-                  fontWeight: 800,
-                  letterSpacing: '0.03em',
-                  textDecoration: 'none',
-                  boxShadow: '0 0 40px rgba(0,255,136,0.35)',
-                }}
-              >
-                Buy Now — $65 →
-              </a>
-
-              <p
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '11px',
-                  color: 'rgba(240,240,245,0.3)',
-                  textAlign: 'center',
-                  letterSpacing: '0.08em',
-                }}
-              >
-                Delivered via email within 24 hours
-              </p>
-            </div>
-          </div>
+    <main style={{ minHeight: '100vh', background: '#050508', color: '#f0f0f5', paddingTop: '80px', fontFamily: 'Inter, sans-serif' }}>
+      <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 32px 60px', textAlign: 'center' }}>
+        <img src="/brand/MaXXiE_Logo.png" alt="MaXXiE Offline AI" style={{ height: '160px', width: 'auto', margin: '0 auto 40px', display: 'block', filter: 'drop-shadow(0 0 40px rgba(0,180,255,0.5))' }} />
+        <div style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(0,180,255,0.1)', border: '1px solid rgba(0,180,255,0.3)', borderRadius: '100px', fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', color: '#00b4ff', textTransform: 'uppercase' as const, marginBottom: '24px' }}>
+          Perpetual Offline Intelligence
         </div>
-
-        {/* Bottom fade */}
-        <div
-          style={{
-            height: '120px',
-            background: 'linear-gradient(to bottom, transparent, #050508)',
-            marginTop: '60px',
-          }}
-        />
+        <h1 style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '24px' }}>
+          AI That Works<br />
+          <span style={{ background: 'linear-gradient(135deg, #00b4ff 0%, #0066ff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            When It Should Not
+          </span>
+        </h1>
+        <p style={{ fontSize: '18px', color: 'rgba(240,240,245,0.6)', maxWidth: '600px', margin: '0 auto 16px', lineHeight: 1.7 }}>
+          MaXXiE is a fully offline AI brain shipped directly to you on a high-speed SSD. No internet required. No subscriptions. No compromises. Your intelligence, forever.
+        </p>
+        <p style={{ fontSize: '14px', color: 'rgba(0,180,255,0.8)', fontWeight: 500 }}>
+          Every MaXXiE includes 5GB basic training dataset access free.
+        </p>
       </section>
 
-      {/* ── WHAT'S INSIDE ────────────────────────────────── */}
-      <section
-        style={{
-          padding: '100px 32px',
-          background: '#050508',
-          position: 'relative',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '56px',
-          }}
-        >
-          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <span
-              style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '11px',
-                color: '#00ff88',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-              }}
-            >
-              What&apos;s Inside
-            </span>
-            <h2
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: 'clamp(30px, 4vw, 48px)',
-                fontWeight: 900,
-                color: '#f0f0f5',
-                letterSpacing: '-0.04em',
-                lineHeight: 1.0,
-              }}
-            >
-              8 Chapters.
-              <br />
-              <span style={{ color: 'rgba(240,240,245,0.35)' }}>Zero Filler.</span>
-            </h2>
+      <section style={{ maxWidth: '900px', margin: '0 auto', padding: '0 32px 80px' }}>
+        <h2 style={{ textAlign: 'center' as const, fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'rgba(240,240,245,0.4)', marginBottom: '32px' }}>Choose Your Drive Size</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+          {drives.map((d, i) => (
+            <button key={d.size} onClick={() => setSelected(i)} style={{ position: 'relative' as const, background: selected === i ? 'rgba(0,180,255,0.1)' : 'rgba(255,255,255,0.03)', border: selected === i ? '1px solid rgba(0,180,255,0.5)' : '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px 20px', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'center' as const, boxShadow: selected === i ? '0 0 30px rgba(0,180,255,0.15)' : 'none' }}>
+              {d.popular && (
+                <div style={{ position: 'absolute' as const, top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#00b4ff', color: '#050508', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', padding: '3px 10px', borderRadius: '100px', whiteSpace: 'nowrap' as const }}>MOST POPULAR</div>
+              )}
+              <div style={{ fontSize: '28px', fontWeight: 800, color: '#f0f0f5', letterSpacing: '-0.02em' }}>{d.size}</div>
+              <div style={{ fontSize: '12px', color: 'rgba(240,240,245,0.4)', marginBottom: '12px' }}>{d.tag}</div>
+              <div style={{ fontSize: '24px', fontWeight: 700, color: selected === i ? '#00b4ff' : '#f0f0f5' }}>${d.price}</div>
+            </button>
+          ))}
+        </div>
+        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '32px', display: 'flex', flexDirection: 'column' as const, alignItems: 'center', gap: '16px' }}>
+          <div style={{ textAlign: 'center' as const }}>
+            <div style={{ fontSize: '14px', color: 'rgba(240,240,245,0.5)', marginBottom: '4px' }}>Selected: MaXXiE on {drives[selected].size} SSD</div>
+            <div style={{ fontSize: '36px', fontWeight: 800, letterSpacing: '-0.02em' }}>${drives[selected].price}<span style={{ fontSize: '16px', fontWeight: 400, color: 'rgba(240,240,245,0.4)' }}> one-time</span></div>
           </div>
-
-          {/* Chapter list */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-            {chapters.map((chapter, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '20px',
-                  padding: '20px 24px',
-                  background:
-                    i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.015)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: 'JetBrains Mono, monospace',
-                    fontSize: '11px',
-                    color: '#00ff88',
-                    letterSpacing: '0.1em',
-                    flexShrink: 0,
-                    marginTop: '2px',
-                  }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '15px',
-                    color: 'rgba(240,240,245,0.75)',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {chapter}
-                </span>
-              </div>
-            ))}
+          <button onClick={handleCheckout} disabled={loading} style={{ width: '100%', maxWidth: '360px', height: '56px', background: loading ? 'rgba(0,180,255,0.4)' : 'linear-gradient(135deg, #00b4ff 0%, #0066ff 100%)', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '15px', fontWeight: 700, letterSpacing: '0.04em', cursor: loading ? 'not-allowed' : 'pointer', boxShadow: '0 0 30px rgba(0,180,255,0.3)', transition: 'all 0.2s' }}>
+            {loading ? 'Redirecting...' : `Order MaXXiE ${drives[selected].size} $${drives[selected].price}`}
+          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(240,240,245,0.4)' }}>
+            <span>📦</span> Allow 7 days for standard delivery
           </div>
         </div>
       </section>
 
-      {/* ── WHO IT'S FOR ─────────────────────────────────── */}
-      <section
-        style={{
-          padding: '80px 32px 140px',
-          background: 'linear-gradient(180deg, #050508 0%, #070710 100%)',
-          position: 'relative',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '48px',
-          }}
-        >
-          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <span
-              style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '11px',
-                color: '#00ff88',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Who It&apos;s For
-            </span>
-            <h2
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: 'clamp(28px, 4vw, 44px)',
-                fontWeight: 900,
-                color: '#f0f0f5',
-                letterSpacing: '-0.04em',
-                lineHeight: 1.0,
-              }}
-            >
-              Built for Builders
-              <br />
-              <span style={{ color: 'rgba(240,240,245,0.35)' }}>Not Browsers.</span>
-            </h2>
-          </div>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: '2px',
-            }}
-          >
-            {[
-              { icon: '◈', label: 'Founders who want to ship their first product' },
-              { icon: '◈', label: 'Developers tired of slow agency workflows' },
-              { icon: '◈', label: 'Non-technical builders using AI to code' },
-              { icon: '◈', label: 'Anyone who needs to go from idea to deployed in days' },
-            ].map((item) => (
-              <div
-                key={item.label}
-                style={{
-                  padding: '28px 24px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '12px',
-                }}
-              >
-                <span style={{ color: '#00ff88', fontSize: '18px' }}>{item.icon}</span>
-                <p
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '14px',
-                    color: 'rgba(240,240,245,0.7)',
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Final CTA */}
-          <div
-            style={{
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '20px',
-              paddingTop: '24px',
-            }}
-          >
-            <a
-              href="mailto:vibesoftwaresolutions@gmail.com?subject=Vibe Coding Manual — Purchase"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '60px',
-                padding: '0 56px',
-                borderRadius: '14px',
-                background: '#00ff88',
-                color: '#050508',
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '16px',
-                fontWeight: 800,
-                letterSpacing: '0.03em',
-                textDecoration: 'none',
-                boxShadow: '0 0 60px rgba(0,255,136,0.4), 0 8px 32px rgba(0,0,0,0.5)',
-              }}
-            >
-              Get the Manual — $65 →
-            </a>
-            <p
-              style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '11px',
-                color: 'rgba(240,240,245,0.25)',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-              }}
-            >
-              PDF · Delivered via email · One-time payment
-            </p>
-          </div>
+      <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px 80px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
+          {[
+            { icon: '🔌', title: 'Fully Offline', body: 'MaXXiE runs entirely on your hardware. No cloud, no internet dependency, no data leaving your hands.' },
+            { icon: '🧠', title: 'Specializable Intelligence', body: 'Train MaXXiE to your exact needs using our PDF datapacks. The more you feed it, the sharper it gets.' },
+            { icon: '♾️', title: 'Perpetual License', body: 'One purchase. No subscriptions, no renewals, no expiration. MaXXiE is yours for life.' },
+            { icon: '💾', title: 'Ships on SSD', body: 'Arrives pre-loaded on a high-speed solid state drive, ready to plug in and run immediately.' },
+            { icon: '🎁', title: '5GB Dataset Included', body: 'Every MaXXiE ships with 5GB of basic training data to get you started right out of the box.' },
+            { icon: '🛡️', title: 'AI Where AI Should Not Be', body: 'Remote locations. Secure facilities. Off-grid environments. MaXXiE works when nothing else can.' },
+          ].map(f => (
+            <div key={f.title} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '28px' }}>
+              <div style={{ fontSize: '28px', marginBottom: '12px' }}>{f.icon}</div>
+              <div style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px' }}>{f.title}</div>
+              <div style={{ fontSize: '14px', color: 'rgba(240,240,245,0.55)', lineHeight: 1.6 }}>{f.body}</div>
+            </div>
+          ))}
         </div>
       </section>
-    </>
+
+      <section style={{ maxWidth: '900px', margin: '0 auto', padding: '0 32px 80px' }}>
+        <div style={{ background: 'rgba(0,180,255,0.05)', border: '1px solid rgba(0,180,255,0.2)', borderRadius: '20px', padding: '40px', textAlign: 'center' as const }}>
+          <div style={{ fontSize: '32px', marginBottom: '16px' }}>📚</div>
+          <h2 style={{ fontSize: '24px', fontWeight: 800, marginBottom: '12px' }}>Expand MaXXiE With PDF Datapacks</h2>
+          <p style={{ fontSize: '15px', color: 'rgba(240,240,245,0.6)', maxWidth: '500px', margin: '0 auto 28px', lineHeight: 1.7 }}>
+            Train MaXXiE on specialized knowledge with our curated PDF dataset collections. The more you train, the more powerful your offline AI becomes.
+          </p>
+          <Link href="/datasets" style={{ display: 'inline-flex', alignItems: 'center', height: '48px', padding: '0 28px', background: 'rgba(0,180,255,0.15)', border: '1px solid rgba(0,180,255,0.4)', color: '#00b4ff', fontWeight: 700, fontSize: '14px', textDecoration: 'none', borderRadius: '10px', letterSpacing: '0.03em' }}>
+            Browse Datapacks
+          </Link>
+        </div>
+      </section>
+
+      <section style={{ maxWidth: '900px', margin: '0 auto', padding: '0 32px 100px' }}>
+        <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '48px', textAlign: 'center' as const }}>
+          <h2 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '12px' }}>Need MaXXiE Built Just for You?</h2>
+          <p style={{ fontSize: '15px', color: 'rgba(240,240,245,0.6)', maxWidth: '520px', margin: '0 auto 28px', lineHeight: 1.7 }}>
+            We can specialize MaXXiE for your industry, workflow, or organization. Medical. Legal. Defense. Agriculture. Whatever your domain we will build an offline AI brain tuned specifically for it.
+          </p>
+          <a href="mailto:vibesoftwaresolutions@gmail.com?subject=MaXXiE Specialization Inquiry" style={{ display: 'inline-flex', alignItems: 'center', height: '52px', padding: '0 32px', background: '#00ff88', color: '#050508', fontWeight: 700, fontSize: '14px', textDecoration: 'none', borderRadius: '10px', letterSpacing: '0.03em', boxShadow: '0 0 20px rgba(0,255,136,0.25)' }}>
+            Ask About Specialization
+          </a>
+        </div>
+      </section>
+    </main>
   )
 }
